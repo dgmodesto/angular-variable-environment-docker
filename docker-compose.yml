@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:  
+  angular-variable-environment-docker:
+    container_name: angular-variable-environment-docker
+    build: 
+      context: .
+      args:
+        - ENVIRONMENT="production"
+        - API_URL="https://variable-environment.prd-docker-compose-env.com.br"
+        - SOME_API_KEY="https://minha-api-de-produtos.com.br"
+        - SOME_OTHER_API_KEY="https://minha-api-de-usuarios.com.br"
+    networks:
+      - local-network
+    ports:
+       - 4200:4200
+
+networks:
+  local-network:
